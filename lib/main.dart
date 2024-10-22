@@ -3,6 +3,7 @@ import 'package:practice_flutter/ui_component/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:practice_flutter/utils/string_extention.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -79,6 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: 'FontSemiBold', color: AppColors.primary80)),
             const Text('폰트 Font Regular 01234',
                 style: TextStyle(fontFamily: 'FontRegular')),
+
+            SvgPicture.asset(
+              'assets/icons/back.svg',
+              width: 24,
+              height: 24,
+            )
+
           ],
         ),
       ),
