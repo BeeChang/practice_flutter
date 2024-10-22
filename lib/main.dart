@@ -113,6 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             Image.asset('images/test_image.png', height: 100, width: 100,), // 이미지 나오는지 확인
+            const Text('폰트 Font Bold 01234', style: TextStyle(fontFamily: 'FontBold')),
+            const Text('폰트 Font Semi Bold 01234', style: TextStyle(fontFamily: 'FontSemiBold')),
+            const Text('폰트 Font Regular 01234', style: TextStyle(fontFamily: 'FontRegular')),
+
+
           ],
         ),
       ),

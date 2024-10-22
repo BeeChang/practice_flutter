@@ -23,5 +23,14 @@ flutter:
   uses-material-design: true
   assets:
     - images/
-
+  fonts:
+    - family: FontBold
+      fonts:
+        - asset: fonts/SUIT-Bold.ttf
+    - family: FontSemiBold
+      fonts:
+        - asset: fonts/SUIT-SemiBold.ttf
+    - family: FontRegular
+      fonts:
+        - asset: fonts/SUIT-Regular.ttf
 
