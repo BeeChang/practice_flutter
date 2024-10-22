@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_flutter/ui_component/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Image.asset('images/test_image.png', height: 100, width: 100,), // 이미지 나오는지 확인
             const Text('폰트 Font Bold 01234', style: TextStyle(fontFamily: 'FontBold')),
-            const Text('폰트 Font Semi Bold 01234', style: TextStyle(fontFamily: 'FontSemiBold')),
+            Text('폰트 Font Semi Bold 01234', style: TextStyle(fontFamily: 'FontSemiBold' , color: AppColors.primary80)),
             const Text('폰트 Font Regular 01234', style: TextStyle(fontFamily: 'FontRegular')),
 
 
