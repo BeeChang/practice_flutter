@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practice_flutter/ui/DetailScreen.dart';
+import 'package:practice_flutter/ui/route/CartScreen.dart';
+import 'package:practice_flutter/ui/route/DetailScreen.dart';
 import 'package:practice_flutter/ui/MainScreen.dart';
+import 'package:practice_flutter/ui/route/PurchaseScreen.dart';
 import 'package:practice_flutter/ui_component/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,7 +31,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/main': (context) => const MainScreen(),  // '/'대신 '/main' 사용
-        '/detail': (context) => const DetailScreen(),
+        '/detail': (context) => DetailScreen(),
+        '/cart': (context) => CartScreen(),
+        '/purchase': (context) => PurchaseScreen(),
       },
       initialRoute: '/main',  // 초기 라우트 설정
       home: const MainScreen(),

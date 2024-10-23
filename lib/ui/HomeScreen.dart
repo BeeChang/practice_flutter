@@ -1,12 +1,15 @@
-import 'package:flutter/material.dart';
 
-import 'DetailScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+
+import 'route/DetailScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -14,18 +17,26 @@ class HomeScreen extends StatelessWidget {
           const Icon(Icons.home, size: 50),
           const Text('홈 화면', style: TextStyle(fontSize: 24)),
           ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(
+            onPressed: () async {
+              // 상세 화면으로 이동하고 결과 받기
+              final result = await Navigator.pushNamed(
                 context,
                 '/detail',
-                arguments: {
-                  'title': '넘기는 값 타이틀 ',
-                  'id': 123,
-                },
-              );
+                arguments: {'productId': 99999999},
+              ) as Map<String, dynamic>?;
+
+              Logger().e('상세화면에서 돌아옴');
+              Logger().e('result: $result');
+
+              if (result != null) {
+                // 상세 화면에서 전달받은 데이터 처리
+                Logger().e('마지막으로 본 상품: ${result['lastViewedProduct']}');
+                Logger().e('조회 시간: ${result['timestamp']}');
+              }
             },
-            child: const Text('상세 화면으로 이동'),
+            child: Text('상품 상세 보기'),
           ),
+
         ],
       ),
     );
