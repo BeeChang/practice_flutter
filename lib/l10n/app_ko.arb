@@ -1,0 +1,22 @@
+{
+  "@@locale": "ko",
+
+  "appTitle": "Hello World",
+
+  "welcomeMessage": "안녕하세요 {name}님 {age}살",
+  "@welcomeMessage": {
+    "placeholders": {
+      "name": {} ,
+      "age": {}
+    }
+  },
+
+  "itemCount": "{count}개의 상품",
+  "@itemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
