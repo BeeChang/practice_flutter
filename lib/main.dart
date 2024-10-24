@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:practice_flutter/ui/go_router/GoRouter.dart';
+import 'package:practice_flutter/ui/route/CartScreen.dart';
+import 'package:practice_flutter/ui/route/DetailScreen.dart';
+import 'package:practice_flutter/ui/MainScreen.dart';
+import 'package:practice_flutter/ui/route/PurchaseScreen.dart';
 import 'package:practice_flutter/ui_component/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,7 +19,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return MaterialApp.router(
+
       //localization
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -25,75 +32,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
+      // 기본 라우터
+      // routes: {
+      //   '/main': (context) => const MainScreen(),
+      //   '/detail': (context) => DetailScreen(),
+      //   '/cart': (context) => CartScreen(),
+      //   '/purchase': (context) => PurchaseScreen(),
+      // },
+      // initialRoute: '/main',  // 초기 라우트 설정
+      // home: const MainScreen(),
+      routerConfig: router,
+
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Image.asset(
-              'images/test_image.png',
-              height: 100,
-              width: 100,
-            ),
-            // 이미지 나오는지 확인
-             Text('폰트 Font Bold 01234 ${context.stringResource?.welcomeMessage("홍길동" , "5")}',
-                style: TextStyle(fontFamily: 'FontBold')),
-            Text('폰트 Font Semi Bold 01234',
-                style: TextStyle(
-                    fontFamily: 'FontSemiBold', color: AppColors.primary80)),
-            const Text('폰트 Font Regular 01234',
-                style: TextStyle(fontFamily: 'FontRegular')),
-
-            SvgPicture.asset(
-              'assets/icons/back.svg',
-              width: 24,
-              height: 24,
-            )
-
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
