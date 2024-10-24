@@ -34,14 +34,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/cart',
-      builder: (context, state) {
-        final extraData = state.extra as Map<String, dynamic>?;
-        return GoCartScreen(
-          intValue: extraData?['intValue'] as int? ?? 0,
-          stringValue: extraData?['stringValue'] as String? ?? '',
-          customData: extraData?['customData'] as CustomData?,
-        );
-      },
+      builder: (context, state) => const GoCartScreen(),
     ),
 
     // 바텀 네비게이션을 위한 StatefulShellRoute
