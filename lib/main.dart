@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_flutter/ui/go_router/GoRouter.dart';
 import 'package:practice_flutter/ui/route/CartScreen.dart';
 import 'package:practice_flutter/ui/route/DetailScreen.dart';
 import 'package:practice_flutter/ui/MainScreen.dart';
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return MaterialApp.router(
+
       //localization
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -29,14 +32,18 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routes: {
-        '/main': (context) => const MainScreen(),  // '/'대신 '/main' 사용
-        '/detail': (context) => DetailScreen(),
-        '/cart': (context) => CartScreen(),
-        '/purchase': (context) => PurchaseScreen(),
-      },
-      initialRoute: '/main',  // 초기 라우트 설정
-      home: const MainScreen(),
+
+      // 기본 라우터
+      // routes: {
+      //   '/main': (context) => const MainScreen(),
+      //   '/detail': (context) => DetailScreen(),
+      //   '/cart': (context) => CartScreen(),
+      //   '/purchase': (context) => PurchaseScreen(),
+      // },
+      // initialRoute: '/main',  // 초기 라우트 설정
+      // home: const MainScreen(),
+      routerConfig: router,
+
     );
   }
 }
