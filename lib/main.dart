@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:practice_flutter/ui/go_router/GoRouter.dart';
-import 'package:practice_flutter/ui/route/CartScreen.dart';
-import 'package:practice_flutter/ui/route/DetailScreen.dart';
 import 'package:practice_flutter/ui/MainScreen.dart';
-import 'package:practice_flutter/ui/route/PurchaseScreen.dart';
 import 'package:practice_flutter/ui_component/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:practice_flutter/utils/string_extention.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void main() {
+import 'di/service_locator.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupDependencies();
   runApp(const MyApp());
 }
 

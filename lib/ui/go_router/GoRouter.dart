@@ -4,7 +4,7 @@ import 'package:practice_flutter/model/CustomData.dart';
 import 'package:practice_flutter/ui/go_router/GoCartScreen.dart';
 import 'package:practice_flutter/ui/go_router/InnerProfileInfo.dart';
 
-import '../HomeScreen.dart';
+import '../home/HomeScreen.dart';
 import '../MainScreen.dart';
 import '../NotificationScreen.dart';
 import '../ProfileScreen.dart';

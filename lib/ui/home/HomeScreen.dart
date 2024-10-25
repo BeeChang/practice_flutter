@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:practice_flutter/di/service_locator.dart';
+import 'package:practice_flutter/repository/user_repository.dart';
+import 'package:practice_flutter/ui/home/home_viewmodel.dart';
 
-import 'go_router/GoRouter.dart';
-import 'route/DetailScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,18 +14,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _counter = 0; // 카운터 상태 추가
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  late final HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    // 홈 화면이 처음 로드되면 초기화 완료로 설정
+    _viewModel = HomeViewModel(
+      userRepository: getIt<UserRepository>(),
+    );
   }
 
   @override
@@ -37,9 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
           const Text('홈 화면', style: TextStyle(fontSize: 24)),
           const SizedBox(height: 20),
 
-          // 카운터 표시 추가
           Text(
-            '현재 카운터: $_counter',
+            '현재 카운터: ${_viewModel.counter}',
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
@@ -54,9 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 20),
 
-          // 증가 버튼 추가
           ElevatedButton(
-            onPressed: _incrementCounter,
+            onPressed: () {
+              _viewModel.incrementCounter();
+              setState(() {}); // UI 업데이트를 위해 setState 호출
+            },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
@@ -70,23 +68,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
           ElevatedButton(
             onPressed: () async {
-              // 상세 화면으로 이동하고 결과 받기
-              // final result = await Navigator.pushNamed(
-              //   context,
-              //   '/detail',
-              //   arguments: {'productId': 99999999},
-              // ) as Map<String, dynamic>?;
-              //
-              // Logger().e('상세화면에서 돌아옴');
-              // Logger().e('result: $result');
-              //
-              // if (result != null) {
-              //   // 상세 화면에서 전달받은 데이터 처리
-              //   Logger().e('마지막으로 본 상품: ${result['lastViewedProduct']}');
-              //   Logger().e('조회 시간: ${result['timestamp']}');
-              // }
+              await _viewModel.fetchUser();
+              // 필요한 경우 setState 호출
+              // setState(() {});
             },
-            child: const Text('상품 상세 보기'),
+            child: const Text('데이터받기 (로그 확인)'),
+          ),
+          const Text(
+            '데이터는 디버그 콘솔에서 확인해주세요',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+            ),
           ),
         ],
       ),
