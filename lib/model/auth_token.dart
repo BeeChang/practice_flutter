@@ -6,9 +6,9 @@ part 'auth_token.g.dart';
 @freezed
 class AuthResponse with _$AuthResponse {
   const factory AuthResponse({
-    @Default(0) int code,
-    @Default('') String message,
-    AuthToken? data,
+    required int code,
+    required String message,
+    required AuthToken data,
   }) = _AuthResponse;
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) =>
@@ -18,8 +18,8 @@ class AuthResponse with _$AuthResponse {
 @freezed
 class AuthToken with _$AuthToken {
   const factory AuthToken({
-    required String accessToken,
-    required String refreshToken,
+    @JsonKey(name: 'access_token') required String accessToken,
+    @JsonKey(name: 'refresh_token') required String refreshToken,
   }) = _AuthToken;
 
   factory AuthToken.fromJson(Map<String, dynamic> json) => _$AuthTokenFromJson(json);

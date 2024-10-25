@@ -19,21 +19,31 @@ Future<void> setupDependencies() async {
   final dio = Dio(BaseOptions(
     baseUrl: 'http://192.168.0.8:8080',
     connectTimeout: const Duration(seconds: 5),
-    receiveTimeout: const Duration(seconds: 3),
+    receiveTimeout: const Duration(seconds: 7),
   ));
+
+  // TokenRefreshManager 등록
+  final tokenManager = await TokenRefreshManager.getInstance(
+    tokenStorage: getIt<TokenStorage>(),
+    baseUrl: 'http://192.168.0.8:8080',
+  );
+  getIt.registerSingleton<TokenRefreshManager>(tokenManager);
 
   // AuthInterceptor 설정
   dio.interceptors.add(AuthInterceptor(
-      getIt<TokenStorage>(),
-      dio,
-      'http://192.168.0.8:8080/api/refresh'
+    getIt<TokenRefreshManager>(),
+    getIt<TokenStorage>(),
+    dio,
   ));
 
   // ApiClient 등록
   getIt.registerSingleton<ApiClient>(ApiClient(dio));
 
-  // UserRepository 등록
+  // UserRepository 등록 추가
   getIt.registerSingleton<UserRepository>(
-      UserRepository(getIt<ApiClient>())
+    UserRepository(
+      getIt<ApiClient>(),
+      getIt<TokenStorage>(),
+    ),
   );
 }
