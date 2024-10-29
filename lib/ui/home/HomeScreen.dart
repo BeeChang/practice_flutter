@@ -40,7 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               await _viewModel.getUserInformation();
             },
-            child: const Text('User 정보 필요'),
+            child: const Text('유저 정보'),
+          ),
+
+          ElevatedButton(
+            onPressed: () async {
+              await _viewModel.getUserFriend();
+            },
+            child: const Text('친구 정보'),
           ),
         ],
       ),

@@ -34,17 +34,13 @@ class HomeViewModel {
 
 
   Future<void> getUserInformation() async {
-
     try {
       final result = await _userRepository.getUser();
 
       result.when(
         success: (users) {
-          logger.i('데이터 요청 성공');
-          logger.d('받은 데이터: $users');
         },
         error: (message) {
-          logger.e('데이터 요청 실패: $message');
         },
       );
     } catch (e, stackTrace) {
@@ -52,6 +48,20 @@ class HomeViewModel {
     }
   }
 
+  Future<void> getUserFriend() async {
+    try {
+      final result = await _userRepository.getFriend();
+
+      result.when(
+        success: (users) {
+        },
+        error: (message) {
+        },
+      );
+    } catch (e, stackTrace) {
+      logger.e('예외 발생', error: e, stackTrace: stackTrace);
+    }
+  }
 
 
 

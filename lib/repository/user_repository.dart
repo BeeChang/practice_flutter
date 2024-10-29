@@ -36,4 +36,14 @@ class UserRepository {
       return ApiResult.error(e.toString());
     }
   }
+
+  Future<ApiResult<User>> getFriend({String query = "test"}) async {
+    try {
+      final res = await _apiClient.getFriend(query);
+      return ApiResult.success(res.user);
+    } catch (e, stackTrace) {
+      logger.e('예외 발생', error: e, stackTrace: stackTrace);
+      return ApiResult.error(e.toString());
+    }
+  }
 }

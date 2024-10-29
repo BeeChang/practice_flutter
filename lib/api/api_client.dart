@@ -17,6 +17,9 @@ abstract class ApiClient {
   @GET("/getUser")
   Future<UserResponse> getUser(@Query('search') String query);
 
+  @GET("/getFriend")
+  Future<UserResponse> getFriend(@Query('search') String query);
+
   @POST("/auth/refresh")
   Future<AuthToken> refreshToken(@Body() Map<String, String> refreshToken);
 }
