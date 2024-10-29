@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 import 'package:practice_flutter/di/service_locator.dart';
 import 'package:practice_flutter/repository/user_repository.dart';
@@ -48,6 +49,13 @@ class _HomeScreenState extends State<HomeScreen> {
               await _viewModel.getUserFriend();
             },
             child: const Text('친구 정보'),
+          ),
+
+          ElevatedButton(
+            onPressed: () async {
+              context.push('/state');
+            },
+            child: const Text('상태 화면으로 이동'),
           ),
         ],
       ),

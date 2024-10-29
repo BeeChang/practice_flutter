@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:practice_flutter/model/CustomData.dart';
 import 'package:practice_flutter/ui/go_router/GoCartScreen.dart';
 import 'package:practice_flutter/ui/go_router/InnerProfileInfo.dart';
+import 'package:practice_flutter/ui/go_router/state_check/MainStateCheckScreen.dart';
 
 import '../home/HomeScreen.dart';
 import '../MainScreen.dart';
@@ -35,6 +36,13 @@ final router = GoRouter(
     GoRoute(
       path: '/cart',
       builder: (context, state) => const GoCartScreen(),
+    ),
+    GoRoute(
+      path: '/cart',
+      builder: (context, state) => const GoCartScreen(),
+    ),
+    GoRoute(path: '/state',
+    builder: (context, state) => const MainStateCheckScreen(),
     ),
 
     // 바텀 네비게이션을 위한 StatefulShellRoute
