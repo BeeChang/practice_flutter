@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:practice_flutter/ui_component/colors.dart';
 
 class MainStateCheckScreen extends StatelessWidget {
@@ -17,7 +18,9 @@ class MainStateCheckScreen extends StatelessWidget {
           children: [
             const Text('상태라이브러리 메인', style: TextStyle(fontSize: 16)),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push('/state/provider/view');
+              },
               color: AppColors.accent100,
               textColor: Colors.white,
               child: Text('PROVIDER VIEWMODEL '),

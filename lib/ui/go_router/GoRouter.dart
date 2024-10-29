@@ -3,7 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:practice_flutter/model/CustomData.dart';
 import 'package:practice_flutter/ui/go_router/GoCartScreen.dart';
 import 'package:practice_flutter/ui/go_router/InnerProfileInfo.dart';
-import 'package:practice_flutter/ui/go_router/state_check/MainStateCheckScreen.dart';
+import 'package:practice_flutter/ui/state_check/MainStateCheckScreen.dart';
+import 'package:practice_flutter/ui/state_check/provider/ProviderTestScreen.dart';
 
 import '../home/HomeScreen.dart';
 import '../MainScreen.dart';
@@ -15,8 +16,6 @@ import 'ScaffoldWithNavBar.dart';
 
 final router = GoRouter(
   initialLocation: '/',
-
-
 
   routes: [
     // 상품과 카트 라우트를 최상위로 이동
@@ -43,6 +42,9 @@ final router = GoRouter(
     ),
     GoRoute(path: '/state',
     builder: (context, state) => const MainStateCheckScreen(),
+    ),
+    GoRoute(path: '/state/provider/view',
+      builder: (context, state) => const ProviderTestScreen(),
     ),
 
     // 바텀 네비게이션을 위한 StatefulShellRoute

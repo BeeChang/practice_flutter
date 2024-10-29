@@ -26,6 +26,8 @@ dependencies:
   json_annotation: ^4.8.1
   synchronized: ^3.3.0
   decimal: ^2.3.3
+  provider: ^6.1.1
+
 
 dev_dependencies:
   flutter_test:
