@@ -22,16 +22,8 @@ Future<void> setupDependencies() async {
     receiveTimeout: const Duration(seconds: 7),
   ));
 
-  // TokenRefreshManager 등록
-  final tokenManager = await TokenRefreshManager.getInstance(
-    tokenStorage: getIt<TokenStorage>(),
-    baseUrl: 'http://192.168.0.8:8080',
-  );
-  getIt.registerSingleton<TokenRefreshManager>(tokenManager);
-
   // AuthInterceptor 설정
   dio.interceptors.add(AuthInterceptor(
-    getIt<TokenRefreshManager>(),
     getIt<TokenStorage>(),
     dio,
   ));
