@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'HomeScreen.dart';
+import 'home/HomeScreen.dart';
 import 'NotificationScreen.dart';
 import 'ProfileScreen.dart';
 import 'SearchScreen.dart';
